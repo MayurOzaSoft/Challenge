@@ -102,7 +102,7 @@ public class Solution3 {
 			int index = magazine.indexOf(ch, chars[ch - 'a']);
 			if (index == -1)
 				return false;
-			chars[ch - 97] = index + 1;
+			chars[ch - 'a'] = index + 1;
 		}
 
 		return true;
