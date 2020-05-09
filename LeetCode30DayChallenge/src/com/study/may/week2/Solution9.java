@@ -14,7 +14,8 @@ package com.study.may.week2;
  *
  */
 public class Solution9 {
-	public boolean isPerfectSquare(int num) {
+
+	public boolean isPerfectSquare_1ms(int num) {
 
 		if (num == 0)
 			return false;
@@ -32,5 +33,27 @@ public class Solution9 {
 		}
 
 		return true;
+	}
+
+	public boolean isPerfectSquare_0ms(int num) {
+		long left = 1, right = num;
+
+		while (left <= right) {
+			long mid = left + (right - left) / 2;
+
+			// check if mid is perfect square
+			if (mid * mid == num)
+				return true;
+
+			if (mid * mid < num) {
+				// mid is small -> go right to increase mid
+				left = mid + 1;
+			} else {
+				// mid is large -> to left to decrease mid
+				right = mid - 1;
+			}
+		}
+
+		return false;
 	}
 }
