@@ -3,6 +3,7 @@ package com.study.may.week3;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * 
@@ -50,6 +51,25 @@ public class Solution20 {
         numbers.add(root.val);
         
         smallestNode(root.right);
+    }
+    
+    public int kthSmallest_StackApproach(TreeNode root, int k) {
+        Stack<TreeNode> stack = new Stack<>();
+        
+        while(true){
+            while(root != null){
+                stack.push(root);
+                root = root.left;
+            }
+            
+            root = stack.pop();
+            
+            if(--k == 0) return root.val;
+            
+            root = root.right;
+            
+        }
+        
     }
 
 	public class TreeNode {
