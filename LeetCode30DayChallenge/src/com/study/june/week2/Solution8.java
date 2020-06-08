@@ -31,5 +31,9 @@ public class Solution8 {
 
 		return true;
 	}
+	
+	public boolean isPowerOfTwo_bit(int n) {
+        return n > 0 && ((n & n - 1) == 0);
+    }
 
 }
