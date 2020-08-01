@@ -5,3 +5,5 @@
 - APRIL
 - MAY
 - JUNE
+- JULY
+- AUGUST
