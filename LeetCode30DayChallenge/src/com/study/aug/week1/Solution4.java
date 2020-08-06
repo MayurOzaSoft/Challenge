@@ -1,4 +1,4 @@
-package com.study.aug;
+package com.study.aug.week1;
 
 /**
  * Power of Four
@@ -23,10 +23,7 @@ public class Solution4 {
 
         int result = (int) (Math.log(num) / Math.log(4));
 
-        if(num == Math.pow(4, result))
-            return true;
-
-        return false;
+        return num == Math.pow(4, result);
     }
 
     public boolean isPowerOfFour_Iterative(int num) {

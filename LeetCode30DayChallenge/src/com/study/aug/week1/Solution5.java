@@ -1,4 +1,4 @@
-package com.study.aug;
+package com.study.aug.week1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,13 +33,13 @@ public class Solution5 {
 
         /** Initialize your data structure here. */
         public WordDictionary() {
-            map = new HashMap<Integer, List<String>>();
+            map = new HashMap<>();
         }
 
         /** Adds a word into the data structure. */
         public void addWord(String word) {
             int len = word.length();
-            List<String> list = map.getOrDefault(len, new ArrayList<String>());
+            List<String> list = map.getOrDefault(len, new ArrayList<>());
             list.add(word);
             map.put(len, list);
         }
@@ -59,8 +59,7 @@ public class Solution5 {
             for(int i = 0; i < s1.length(); i++) {
                 char ch1 = s1.charAt(i);
                 char ch2 = s2.charAt(i);
-                if(ch1 == '.')  continue;
-                else if(ch1 != ch2) return false;
+                if(ch1 != '.' && ch1 != ch2) return false;
             }
             return true;
         }

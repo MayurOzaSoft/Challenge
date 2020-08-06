@@ -1,4 +1,4 @@
-package com.study.aug;
+package com.study.aug.week1;
 
 /**
  * Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.

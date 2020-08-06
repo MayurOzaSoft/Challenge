@@ -1,4 +1,4 @@
-package com.study.aug;
+package com.study.aug.week1;
 
 import java.util.HashMap;
 import java.util.Map;
