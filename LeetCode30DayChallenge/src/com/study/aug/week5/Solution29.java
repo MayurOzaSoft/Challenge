@@ -47,6 +47,7 @@ import java.util.List;
  *
  */
 public class Solution29 {
+
     public List<Integer> pancakeSort(int[] A) {
         List<Integer> res = new ArrayList<>();
         int curr = A.length;
