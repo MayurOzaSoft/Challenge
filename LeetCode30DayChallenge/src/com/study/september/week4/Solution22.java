@@ -66,7 +66,7 @@ public class Solution22 {
         count_2 = 0;
 
         for(int num : nums){
-            if(candidate_1 == num) count_1 ++;
+            if(candidate_1 != null && candidate_1 == num) count_1 ++;
             if(candidate_2 != null && candidate_2 == num) count_2 ++;
         }
 
