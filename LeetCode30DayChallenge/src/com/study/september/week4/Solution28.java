@@ -25,6 +25,10 @@ package com.study.september.week4;
  */
 public class Solution28 {
 
+    /**
+     * TC >> O(N)
+     * SC >> O(1)
+     */
     public static int numSubarrayProductLessThanK(int[] nums, int k) {
 
         if(k <= 1) return 0;
@@ -44,6 +48,11 @@ public class Solution28 {
         return count;
     }
 
+    /**
+     * TC >> O(N^2)
+     * SC >> O(1)
+     *
+     */
     public static int numSubarrayProductLessThanK_n2(int[] nums, int k) {
         int count = 0;
 
