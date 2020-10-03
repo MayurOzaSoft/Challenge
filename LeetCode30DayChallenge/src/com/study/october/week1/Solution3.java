@@ -88,10 +88,10 @@ public class Solution3 {
                 while(j < nums.length && nums[i] + k == nums[j]) j ++; //To eliminate duplicate
             }
             else if(nums[i] + k > nums[j]){
-                j++;
+                j ++;
             }
-            else{
-                i++;
+            else {
+                i ++;
             }
         }
     }
