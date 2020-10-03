@@ -1,8 +1,6 @@
 package com.study.october.week1;
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  *  K-diff Pairs in an Array
@@ -86,7 +84,7 @@ public class Solution3 {
 
         while(i < nums.length && j < nums.length){
             if(i != j && nums[i] + k == nums[j]){
-                numPairs++;
+                numPairs ++;
                 while(j < nums.length && nums[i] + k == nums[j]) j ++; //To eliminate duplicate
             }
             else if(nums[i] + k > nums[j]){
