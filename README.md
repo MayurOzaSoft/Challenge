@@ -7,5 +7,5 @@
 - JUNE
 - JULY
 - AUGUST
-- Sepetember
-- October
+- SEPTEMBER
+- OCTOBER
