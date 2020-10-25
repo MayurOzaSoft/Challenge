@@ -1,81 +1,56 @@
 package com.study.october.week3;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Queue;
-
 /**
+ * Minimum Domino Rotations For Equal Row
  *
- * Meeting Rooms II
+ * In a row of dominoes, A[i] and B[i] represent the top and bottom halves of the ith domino.  (A domino is a tile with two numbers from 1 to 6 - one on each half of the tile.)
  *
- * Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), find the minimum number of conference rooms required.
+ * We may rotate the ith domino, so that A[i] and B[i] swap values.
+ *
+ * Return the minimum number of rotations so that all the values in A are the same, or all the values in B are the same.
+ *
+ * If it cannot be done, return -1.
  *
  * Example 1:
  *
- * Input: [[0, 30],[5, 10],[15, 20]]
+ * Input: A = [2,1,2,4,2,2], B = [5,2,6,2,3,2]
  * Output: 2
+ *
+ * Explanation:
+ * The first figure represents the dominoes as given by A and B: before we do any rotations.
+ * If we rotate the second and fourth dominoes, we can make every value in the top row equal to 2, as indicated by the second figure.
  *
  * Example 2:
  *
- * Input: [[7,10],[2,4]]
- * Output: 1
+ * Input: A = [3,5,1,2,3], B = [3,6,3,3,4]
+ * Output: -1
+ *
+ * Explanation:
+ * In this case, it is not possible to rotate the dominoes to make one row of values equal.
+ *
+ * Constraints:
+ *
+ * 2 <= A.length == B.length <= 2 * 104
+ * 1 <= A[i], B[i] <= 6
  *
  */
 public class Solution19 {
-    public int minMeetingRooms_I(int[][] intervals){
-        if(intervals.length == 0) return 0;
-
-        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
-
-        int meetingRooms = 0;
-        Queue<Integer> priorityQueue = new PriorityQueue<>();
-
-        for (int[] interval : intervals) {
-            if(priorityQueue.isEmpty()){
-                meetingRooms ++;
-                priorityQueue.add(interval[1]);
-            } else {
-                int end = priorityQueue.peek();
-                int start = interval[0];
-
-                if(start >= end) {
-                    priorityQueue.poll();
-                } else {
-                    meetingRooms ++;
-                }
-
-                priorityQueue.add(interval[1]);
+    public int minDominoRotations(int[] A, int[] B) {
+        int[] cntA = new int[7], cntB = new int[7], cntSame = new int[7];
+        int n = A.length;
+        for (int i = 0; i < n; i++) {
+            int a = A[i], b = B[i];
+            cntA[a] += 1;
+            cntB[b] += 1;
+            if (a == b) cntSame[a] += 1;
+        }
+        int ans = n;
+        for (int v = 1; v <= 6; v++) {
+            if (cntA[v] + cntB[v] - cntSame[v] == n) {
+                int minSwap = Math.min(cntA[v], cntB[v]) - cntSame[v];
+                ans = Math.min(ans, minSwap);
             }
         }
-
-        return meetingRooms;
-    }
-
-    public int minMeetingRooms_II(int[][] intervals){
-        if(intervals.length == 0) return 0;
-
-        int[] start = new int[intervals.length];
-        int[] end = new int[intervals.length];
-
-        for (int i = 0; i < intervals.length; i++) {
-            start[i] = intervals[i][0];
-            end[i] = intervals[i][1];
-        }
-
-        Arrays.sort(start);
-        Arrays.sort(end);
-
-        int rooms = 0, endMeeting = 0;
-
-        for(int i = 0; i < intervals.length; i ++){
-            if(start[i] < end[endMeeting]){
-                rooms ++;
-            } else {
-                endMeeting ++;
-            }
-        }
-
-        return rooms;
+        return ans == n ? -1 : ans;
     }
 }
